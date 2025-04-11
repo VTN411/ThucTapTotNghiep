@@ -67,4 +67,17 @@ public class SalaryController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error deleting salary");
         }
     }
+    @GetMapping("/calculate-salary")
+    public ResponseEntity<String> calculateSalary(
+            @RequestParam double baseSalary,
+            @RequestParam double overtimeHours,
+            @RequestParam double overtimeRate) {
+        try {
+            double overtimePay = overtimeHours * overtimeRate;
+            double totalSalary = baseSalary + overtimePay;
+            return ResponseEntity.status(HttpStatus.OK).body("Tổng Lương: " + totalSalary);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error calculating salary");
+        }
+    }
 }
