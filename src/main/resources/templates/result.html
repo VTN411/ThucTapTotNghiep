@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả chấm công</title>
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --error-color: #ea4335;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+
+        tr:hover {
+            background-color: rgba(66, 133, 244, 0.1);
+        }
+
+        .json-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+        }
+
+        .json-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .json-link {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 15px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .json-link i {
+            margin-right: 5px;
+        }
+
+        .json-link:hover {
+            text-decoration: underline;
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+        }
+
+        .back-btn:hover {
+            background-color: #3367d6;
+        }
+
+        .back-btn i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            th, td {
+                padding: 8px 10px;
+                font-size: 14px;
+            }
+
+            .json-section h2 {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .json-link {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Kết quả chấm công</h1>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+            <tr>
+                <th>Mã NV</th>
+                <th>Tên nhân viên</th>
+                <th>Ngày chấm</th>
+                <th>Giờ vào</th>
+                <th>Giờ ra</th>
+                <th>Trạng thái</th>
+                <th>Ghi chú</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="chamCong : ${chamCongs}">
+                <td th:text="${chamCong.maNV}"></td>
+                <td th:text="${chamCong.tenNhanVien}"></td>
+                <td th:text="${chamCong.ngayCham}"></td>
+                <td th:text="${chamCong.gioVao}"></td>
+                <td th:text="${chamCong.gioRa}"></td>
+                <td th:text="${chamCong.trangThai}"></td>
+                <td th:text="${chamCong.ghiChu}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="json-section">
+        <h2>
+            Dữ liệu JSON API
+            <a th:href="@{/api/chamcong}" class="json-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i>Xem tại đây
+            </a>
+        </h2>
+    </div>
+</div>
+
+<script>
+    // Hiển thị dữ liệu dạng JSON
+    const chamCongs = [[${chamCongs}]];
+    document.getElementById('jsonResult').textContent = JSON.stringify(chamCongs, null, 2);
+</script>
+</body>
+</html>

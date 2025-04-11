@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style_update.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">Human Resource Management Project</div>
+    <div class="container">
+      <div class="sidebar">
+        <div>
+          <div class="avatar"></div>
+          <div style="text-align: center; margin: 10px 0;">Nguyễn Văn A</div>
+          <ul class="menu-list">
+            <li><i class="fas fa-user"></i> Quản lý Nhân Viên</li>
+            <li><i class="fas fa-file-contract"></i> Quản lý Hợp Đồng</li>
+            <li><i class="fas fa-money-bill-wave"></i> Quản lý Lương và Phúc Lợi</li>
+            <li><i class="fas fa-shield-alt"></i> Thuế và Bảo Hiểm</li>
+            <li class="menu-item">
+                <input type="checkbox" id="cham-cong-toggle" class="toggle-menu">
+                <label for="cham-cong-toggle"><i class="fas fa-calendar-check"></i> Quản lý Chấm Công</label>
+                <ul class="submenu">
+                  <li><i class="fas fa-list"></i> Danh Sách Chấm Công</li>
+                  <li><i class="fas fa-edit"></i> Cập Nhật Chấm Công</li>
+                </ul>
+              </li>
+            <li><i class="fas fa-briefcase"></i> Quá Trình Công Tác</li>
+            <li><i class="fas fa-chalkboard-teacher"></i> Quản lý Đào Tạo</li>
+            <li><i class="fas fa-chart-line"></i> Quản lý Hiệu Suất</li>
+            <li><i class="fas fa-user-plus"></i> Quản lý Tuyển Dụng</li>
+          </ul>
+        </div>
+        <div class="signout">
+            <a href="#">Sign Out</a>
+        </div>
+      </div>
+  
+      <div class="main">
+        <h3>Danh Sach Cham Cong</h3>
+        <div class="form-filter">
+        <div class="input-group">
+            <i class="fas fa-id-badge"></i>
+            <input type="text" placeholder="Mã Nhân Viên">
+        </div>
+        <div class="input-group">
+            <i class="fas fa-calendar-alt"></i>
+            <input type="text" placeholder="Tháng/Năm">
+        </div>
+        <button class="filter-btn"><i class="fas fa-search"></i> Lọc Danh Sách</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Mã Chấm Công</th>
+              <th>Ngày Chấm Công</th>
+              <th>Giờ Vào</th>
+              <th>Giờ Ra</th>
+              <th>Mã Nhân Viên</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <div class="footer">
+        <div class="footer-content">
+        <span>© 2025 Human Resource Management System</span>
+        <span>Version 1.0.0</span>
+      </div></div>
+</body>
+</html>
