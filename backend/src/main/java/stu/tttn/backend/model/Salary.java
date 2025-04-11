@@ -14,7 +14,6 @@ public class Salary {
     private String maNhanVien;
     private String maPhucLoi;
 
-    // Getters and Setters
     public String getMaLuong() {
         return maLuong;
     }

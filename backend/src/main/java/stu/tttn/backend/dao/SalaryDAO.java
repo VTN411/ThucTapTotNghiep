@@ -9,7 +9,7 @@ import java.sql.*;
 public class SalaryDAO {
     private Connection getConnection() throws SQLException {
         // Connection logic to the database (using JDBC or connection pool)
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/thuctap", "root", "1");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/thuctap", "root", "");
     }
 
     // Create Salary
